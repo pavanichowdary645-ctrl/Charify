@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useCallback, useState } from 'react';
 import API from '../api';
 import { useAuth } from '../context/AuthContext';
 
@@ -23,7 +23,7 @@ export default function Dashboard() {
   const fetchData = useCallback(async () => {
     const [c, s] = await Promise.all([API.get(`/ngos/${user.id}/causes`), API.get('/donations/ngo/stats')]).catch(() => [{data:[]},{data:{}}]);
     setCauses(c.data); setStats(s.data);
-  }, [user.id]);
+  }, []);
 
   useEffect(() => { fetchData(); }, [fetchData]);
 
